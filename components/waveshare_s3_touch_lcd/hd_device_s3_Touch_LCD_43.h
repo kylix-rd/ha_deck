@@ -3,7 +3,7 @@
 #include "esphome/core/component.h"
 #include "esphome/core/helpers.h"
 #include "esphome/core/log.h"
-#include "ESP32_Display_Panel/ESP_Panel.h"
+#include "ESP32_Display_Panel/src/ESP_Panel.h"
 #include "lvgl.h"
 
 LV_IMG_DECLARE(bg_480x320);
