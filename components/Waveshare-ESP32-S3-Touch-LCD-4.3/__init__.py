@@ -7,6 +7,7 @@ import esphome.core.config as cfg
 from esphome.core import CORE, coroutine_with_priority
 from esphome.const import (
     CONF_ID,
+    CONF_BRIGHTNESS
 )
 
 CODEOWNERS = ["@kylix.rd"]
@@ -17,6 +18,7 @@ HaDeckDevice = hd_device_ns.class_("HaDeckDevice", cg.Component)
 CONFIG_SCHEMA = cv.Schema(
     {
         cv.GenerateID(): cv.declare_id(HaDeckDevice),
+        cv.Required(CONF_BRIGHTNESS): cv.int_range(min=0, max=100),
     }
 )
 
