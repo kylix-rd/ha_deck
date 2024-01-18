@@ -35,7 +35,7 @@ async def to_code(config):
     core.CORE.add_job(cfg.add_includes, [lv_conf_path])
 
     cg.add_library("lvgl/lvgl", "^8.3")
-    cg.add_library("https://github.com/kylix-rd/ha_deck.git", "foo")
+    cg.add_library("https://github.com/kylix-rd/ha_deck.git", "")
     cg.add_platformio_option("build_flags", LVGL_BUILD_FLAGS)
     cg.add_platformio_option("build_flags", ["-D LV_CONF_PATH='"+lv_conf_path+"'"])
 
