@@ -19,7 +19,7 @@ void IRAM_ATTR flush_pixels(lv_disp_drv_t *disp, const lv_area_t *area, lv_color
     //uint32_t len = w * h;
 
     auto* display = lcd.getLcd();
-    display->begin()
+    display->begin();
     display->drawBitmap(area->x1, area->y1, area->x2, area->y2, color_p->full);
     
     // lcd.startWrite();                            /* Start new TFT transaction */
@@ -32,13 +32,12 @@ void IRAM_ATTR flush_pixels(lv_disp_drv_t *disp, const lv_area_t *area, lv_color
 
 void IRAM_ATTR touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data)
 {
-    uint16_t touchX, touchY;
-    auto* touch = lcd.getTouch();
+    auto* touch = lcd.getLcdTouch();
 
-    bool touched = lcd.getTouch(&touchX, &touchY);
-    if (touched) {
-        data->point.x = touchX;
-        data->point.y = touchY;
+    if (lcd.getTouchState()) {
+        TouchPoint point = lcd.getTouch(0);
+        data->point.x = point.x;
+        data->point.y = point.y;
         data->state = LV_INDEV_STATE_PR;
     } else {
         data->state = LV_INDEV_STATE_REL;
