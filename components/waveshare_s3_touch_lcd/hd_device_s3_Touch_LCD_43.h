@@ -8,6 +8,10 @@
 
 LV_IMG_DECLARE(bg_480x320);
 
+#define TFT_WIDTH 800
+#define TFT_HEIGHT 480
+
+
 namespace esphome {
 namespace hd_device {
 
