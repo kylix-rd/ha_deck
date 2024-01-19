@@ -35,8 +35,8 @@ async def to_code(config):
     core.CORE.add_job(cfg.add_includes, [lv_conf_path])
 
     cg.add_library("lvgl/lvgl", "^8.3")
-    cg.add_library("https://github.com/esp-arduino-libs/ESP32_IO_Expander", "")
-    cg.add_library("https://github.com/esp-arduino-libs/ESP32_Display_Panel", "")
+    cg.add_library("esp-arduino-libs/ESP32_IO_Expander", "^0.0.2")
+    cg.add_library("esp-arduino-libs/ESP32_Display_Panel", "^0.0.2")
     cg.add_platformio_option("build_flags", LVGL_BUILD_FLAGS)
     cg.add_platformio_option("build_flags", ["-D LV_CONF_PATH='"+lv_conf_path+"'"])
 
