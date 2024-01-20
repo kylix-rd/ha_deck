@@ -35,8 +35,8 @@ void IRAM_ATTR touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data
 {
     auto* touch = lcd.getLcdTouch();
 
-    if (touch.getTouchState()) {
-        TouchPoint point = touch.getTouch(0);
+    if (touch->getTouchState()) {
+        TouchPoint point = touch->getTouch(0);
         data->point.x = point.x;
         data->point.y = point.y;
         data->state = LV_INDEV_STATE_PR;
