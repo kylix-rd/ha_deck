@@ -25,7 +25,6 @@ CONFIG_SCHEMA = cv.Schema(
 LVGL_BUILD_FLAGS = [
     "-D LV_USE_DEV_VERSION=1",
     "-D LV_LVGL_H_INCLUDE_SIMPLE=1",
-    "-D ESP_PANEL_CONF_PATH=/src/controller-display/.esphome/build/controller-display/src/esphome/components/waveshare_s3_touch_lcd/ESP_Panel_Conf.h",
 ]
 
 async def to_code(config):
@@ -34,12 +33,15 @@ async def to_code(config):
 
     lv_conf_path = os.path.join(component_dir, 'lv_conf.h')
     core.CORE.add_job(cfg.add_includes, [lv_conf_path])
+    esp_panel_conf = os.path.join(component_dir, 'ESP_Panel_Conf.h')
+    core.CORE.add_job(cfg.add_includes, [esp_panel_conf])
 
     cg.add_library("lvgl/lvgl", "^8.3")
     cg.add_library("lzw655/ESP32_IO_Expander", "^1.1.0")
     cg.add_library("lzw655/ESP32_Display_Panel", "^1.1.1")
     cg.add_platformio_option("build_flags", LVGL_BUILD_FLAGS)
     cg.add_platformio_option("build_flags", ["-D LV_CONF_PATH='"+lv_conf_path+"'"])
+    cg.add_platformio_option("build_flags", ["-D ESP_PANEL_CONF_PATH='"+esp_panel_conf+"'"])
 
     var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
