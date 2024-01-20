@@ -1,5 +1,4 @@
 #include "hd_device_s3_Touch_LCD_43.h"
-#include <>
 
 namespace esphome {
 namespace hd_device {
@@ -36,7 +35,7 @@ void IRAM_ATTR touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data
     auto* touch = lcd.getLcdTouch();
 
     if (touch->getTouchState()) {
-        TouchPoint point = touch->getTouch(0);
+        TouchPoint point = touch->getPoint(0);
         data->point.x = point.x;
         data->point.y = point.y;
         data->state = LV_INDEV_STATE_PR;
