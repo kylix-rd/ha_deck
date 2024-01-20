@@ -25,6 +25,7 @@ CONFIG_SCHEMA = cv.Schema(
 LVGL_BUILD_FLAGS = [
     "-D LV_USE_DEV_VERSION=1",
     "-D LV_LVGL_H_INCLUDE_SIMPLE=1",
+    "-D ESP_PANEL_CONF_INCLUDE_SIMPLE=1",
 ]
 
 async def to_code(config):

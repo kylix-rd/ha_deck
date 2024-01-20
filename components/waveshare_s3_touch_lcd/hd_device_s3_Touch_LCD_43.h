@@ -1,7 +1,5 @@
 #pragma once
 
-#define ESP_PANEL_CONF_INCLUDE_SIMPLE
-
 #include "esphome/core/component.h"
 #include "esphome/core/helpers.h"
 #include "esphome/core/log.h"
