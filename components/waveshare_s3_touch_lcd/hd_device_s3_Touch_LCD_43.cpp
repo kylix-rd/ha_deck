@@ -21,7 +21,7 @@ void IRAM_ATTR flush_pixels(lv_disp_drv_t *disp, const lv_area_t *area, lv_color
 
     auto* display = lcd.getLcd();
     display->begin();
-    display->drawBitmap(area->x1, area->y1, area->x2, area->y2, static_cast<void*>(color_p->full));
+    display->drawBitmap(area->x1, area->y1, area->x2, area->y2, static_cast<void*>(color_p));
     
     // lcd.startWrite();                            /* Start new TFT transaction */
     // lcd.setAddrWindow(area->x1, area->y1, w, h); /* set the working window */
