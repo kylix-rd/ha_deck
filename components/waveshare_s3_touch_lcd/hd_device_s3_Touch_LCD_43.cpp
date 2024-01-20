@@ -50,6 +50,8 @@ void HaDeckDevice::setup() {
 
     lcd.init();
     lcd.begin();
+    lcd.getLcd()->displayOn();
+    lcd.getBacklight()->set_brightness(80);
 
     lv_disp_draw_buf_init(&draw_buf, buf, NULL, TFT_HEIGHT * 20);
 
