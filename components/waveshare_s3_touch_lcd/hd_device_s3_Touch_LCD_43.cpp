@@ -20,7 +20,6 @@ void IRAM_ATTR flush_pixels(lv_disp_drv_t *disp, const lv_area_t *area, lv_color
     //uint32_t len = w * h;
 
     auto* display = lcd.getLcd();
-    display->begin();
     display->drawBitmap(area->x1, area->y1, area->x2, area->y2, static_cast<void*>(color_p));
     
     // lcd.startWrite();                            /* Start new TFT transaction */
@@ -50,6 +49,7 @@ void HaDeckDevice::setup() {
     lv_theme_default_init(NULL, lv_color_hex(0xFFEB3B), lv_color_hex(0xFF7043), 1, LV_FONT_DEFAULT);
 
     lcd.init();
+    lcd.begin();
 
     lv_disp_draw_buf_init(&draw_buf, buf, NULL, TFT_HEIGHT * 20);
 
