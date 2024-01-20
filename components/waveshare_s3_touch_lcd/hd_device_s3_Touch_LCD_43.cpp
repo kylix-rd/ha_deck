@@ -1,4 +1,5 @@
 #include "hd_device_s3_Touch_LCD_43.h"
+#include "arduino.h"
 
 namespace esphome {
 namespace hd_device {
@@ -89,6 +90,15 @@ void HaDeckDevice::loop() {
 }
 
 float HaDeckDevice::get_setup_priority() const { return setup_priority::DATA; }
+
+uint8_t HaDeckDevice::get_brightness() {
+    return brightness_;
+}
+
+void HaDeckDevice::set_brightness(uint8_t value) {
+    brightness_ = value;
+    lcd.getBacklight()->setBrightness(brightness_);
+}
 
 }  // namespace hd_device
 }  // namespace esphome
