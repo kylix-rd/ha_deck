@@ -1,4 +1,5 @@
 #include "hd_device_s3_Touch_LCD_43.h"
+#include <>
 
 namespace esphome {
 namespace hd_device {
@@ -20,7 +21,7 @@ void IRAM_ATTR flush_pixels(lv_disp_drv_t *disp, const lv_area_t *area, lv_color
 
     auto* display = lcd.getLcd();
     display->begin();
-    display->drawBitmap(area->x1, area->y1, area->x2, area->y2, color_p->full);
+    display->drawBitmap(area->x1, area->y1, area->x2, area->y2, static_cast<void*>(color_p->full));
     
     // lcd.startWrite();                            /* Start new TFT transaction */
     // lcd.setAddrWindow(area->x1, area->y1, w, h); /* set the working window */
@@ -34,8 +35,8 @@ void IRAM_ATTR touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data
 {
     auto* touch = lcd.getLcdTouch();
 
-    if (lcd.getTouchState()) {
-        TouchPoint point = lcd.getTouch(0);
+    if (touch.getTouchState()) {
+        TouchPoint point = touch.getTouch(0);
         data->point.x = point.x;
         data->point.y = point.y;
         data->state = LV_INDEV_STATE_PR;
